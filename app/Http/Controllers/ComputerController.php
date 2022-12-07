@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Computer;
 use Illuminate\Http\Request;
+use App\Models\Brand;
+use App\Models\Computer;
+
 
 class ComputerController extends Controller
 {
@@ -14,7 +16,8 @@ class ComputerController extends Controller
      */
     public function index()
     {
-        //
+        $computers = Computer::all();
+        return view('computer.index', compact('computers'));
     }
 
     /**
@@ -24,7 +27,8 @@ class ComputerController extends Controller
      */
     public function create()
     {
-        //
+        $brands = Brand::all();
+        return view('computer.create', compact('brands'));
     }
 
     /**
@@ -35,7 +39,19 @@ class ComputerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'brand_id' => 'required',
+        ]);
+
+        Computer::create(
+            [
+                'name' => $request->name,
+                'brand_id' => $request->brand_id,
+            ]
+        );
+        return redirect()->route('computer.index')->with('success', 'Computer created successfully.');
     }
 
     /**

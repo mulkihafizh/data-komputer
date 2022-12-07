@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        
+
         Schema::create('computers', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->bigInteger('brand_id');
+            $table->boolean('condition')->default(1);
+            $table->bigInteger('room_id')->nullable();
             $table->timestamps();
         });
     }

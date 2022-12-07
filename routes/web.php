@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [DashboardController::class,'index'])->name('dashboard.index');
+Route::resource('computer', ComputerController::class);
+Route::resource('brand', BrandController::class);
+Route::resource('room', RoomController::class);
