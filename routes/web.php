@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [DashboardController::class,'index'])->name('dashboard.index');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::resource('computer', ComputerController::class);
 Route::resource('brand', BrandController::class);
 Route::resource('room', RoomController::class);
+Route::get('/status', [ComputerController::class, 'status'])->name('computer.status');

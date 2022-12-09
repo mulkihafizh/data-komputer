@@ -9,10 +9,14 @@
 
                     <h1 class="title text-2xl mb-4"><i class="bi bi-display text-text-color"></i> Computer</h1>
                     <div class="data text-text-color">
-                        <p>Total: 20</p>
-                        <p>Merk Komputer: 4</p>
-                        <p>Kondisi Baik: 12</p>
-                        <p>Kondisi Rusak: 8</p>
+                        <p>Total: {{ $computers->count() }}</p>
+                        <p>Merk Komputer: {{ $brands->count() }}</p>
+                        <p>Kondisi Baik:
+                            {{ $computers->where('condition', 1)->count() }}
+                        </p>
+                        <p>Kondisi Rusak:
+                            {{ $computers->where('condition', 0)->count() }}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -21,9 +25,13 @@
             <div class="room rounded-lg  ">
                 <h1 class="title text-2xl mb-4"><i class="bi bi-building text-text-color"></i> Room</h1>
                 <div class="data text-text-color">
-                    <p>Total: 4</p>
-                    <p>Total Komputer yang menempati Ruangan : 18</p>
-                    <p>Total Komputer tanpa Ruangan</p>
+                    <p>Total: {{ $rooms->count() }}</p>
+                    <p>Total Komputer yang menempati Ruangan :
+                        {{ $computers->where('room_id', '!=', null)->count() }}
+                    </p>
+                    <p>Total Komputer tanpa Ruangan
+                        {{ $computers->where('room_id', null)->count() }}
+                    </p>
                 </div>
             </div>
         </div>

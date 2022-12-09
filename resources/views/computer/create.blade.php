@@ -1,11 +1,10 @@
 @extends('layout.main')
 
 @section('content')
-    <section class="grow lg:mx-20 my-8 mx-5 my-auto text-white ">
-        <div class="form mx-40 ">
-
-        <form action="/computer" method="POST"
-                class="flex flex-col gap-5 px-8 bg-third-color rounded-lg shadow-lg py-12" autocomplete="off">
+    <section class="grow lg:mx-20 mx-5 flex min-h-screen items-center text-white ">
+        <div class="form mx-40 grow ">
+            <form action="/computer" method="POST" class="flex flex-col gap-5 px-8 bg-third-color rounded-lg shadow-lg py-12"
+                autocomplete="off">
                 @csrf
                 <div class="title text-3xl mb-4 flex  items-center flex-col">
                     <i class="bi bi-display text-8xl"></i>

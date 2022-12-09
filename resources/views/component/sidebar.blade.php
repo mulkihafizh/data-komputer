@@ -1,7 +1,7 @@
 <div class="navigation">
-    <span class="absolute lg:hidden text-white text-4xl top-5 left-40 cursor-pointer side-toggler" onclick="openSidebar()"
+    <span class="absolute lg:hidden text-white text-4xl top-5 left-10 cursor-pointer side-toggler" onclick="openSidebar()"
         class="z-index:-1;">
-        <i class="bi bi-filter-left px-2 bg-gray-900 rounded-md"></i>
+        <i class="bi bi-filter-left px-2 rounded-md"></i>
     </span>
     <div
         class="sidebar fixed min-h-screen h-full top-0 bottom-0 lg:left-0 p-2 w-[300px] overflow-y-auto text-center bg-primary-color">

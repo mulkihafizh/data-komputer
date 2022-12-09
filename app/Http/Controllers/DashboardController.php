@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Computer;
+use App\Models\Room;
+use App\Models\Brand;
 
 class DashboardController extends Controller
 {
@@ -13,7 +16,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $computers = Computer::all();
+        $rooms = Room::all();
+        $brands = Brand::all();
+        return view('index', compact('computers', 'rooms', 'brands'));
     }
 
     /**

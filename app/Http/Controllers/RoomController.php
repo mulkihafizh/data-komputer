@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class RoomController extends Controller
 {
@@ -14,7 +15,10 @@ class RoomController extends Controller
      */
     public function index()
     {
-        return view('room.index');
+        $rooms = Room::orderBy('room_number', 'asc')->get();
+
+
+        return view('room.index', compact('rooms'));
     }
 
     /**
@@ -24,7 +28,9 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+        $now = now()->format('J-m-Y');
+        
+        return view('room.create');
     }
 
     /**
@@ -35,7 +41,18 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $request->validate([
+            'room_number' => 'required',
+        ]);
+
+
+        Room::create([
+            'room_number' => $request->room_number,
+            'slug' => Str::slug($request->room_number),
+        ]);
+
+        return redirect()->route('room.index')->with('success', 'Room created successfully.');
     }
 
     /**
@@ -80,6 +97,7 @@ class RoomController extends Controller
      */
     public function destroy(Room $room)
     {
-        //
+        //update Computer->room_id -> null
+        //delete Room
     }
 }

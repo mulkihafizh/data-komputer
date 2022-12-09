@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Brand;
 use App\Models\Computer;
+use App\Models\Room;
 
 
 class ComputerController extends Controller
@@ -73,7 +74,11 @@ class ComputerController extends Controller
      */
     public function edit(Computer $computer)
     {
-        //
+        $computer = Computer::find($computer->id);
+        $rooms = Room::all();
+        $brands = Brand::all();
+
+        return view('computer.edit', compact('computer', 'rooms', 'brands'));
     }
 
     /**
@@ -85,7 +90,23 @@ class ComputerController extends Controller
      */
     public function update(Request $request, Computer $computer)
     {
-        //
+        // dd($request->all());
+        $request->validate([
+            'name' => 'required',
+            'brand_id' => 'required',
+            'room_id' => 'required',
+            'condition' => 'required',
+        ]);
+
+        $computer->update(
+            [
+                'name' => $request->name,
+                'brand_id' => $request->brand_id,
+                'room_id' => $request->room_id,
+                'condition' => $request->condition,
+            ]
+        );
+        return redirect()->route('computer.index')->with('success', 'Computer updated successfully.');
     }
 
     /**
@@ -96,6 +117,13 @@ class ComputerController extends Controller
      */
     public function destroy(Computer $computer)
     {
-        //
+        $computer->delete();
+        return redirect()->route('computer.index')->with('success', 'Computer deleted successfully');
+    }
+
+    public function status()
+    {
+        $computers = Computer::all();
+        return view('computer.status', compact('computers'));
     }
 }

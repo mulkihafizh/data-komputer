@@ -24,8 +24,12 @@
                             <p>Jumlah Komputer:
                                 {{ $brand->computer->count() }}
                             </p>
-                            <p>Kondisi Baik: 6</p>
-                            <p>Kondisi Rusak: 4</p>
+                            <p>Kondisi Baik:
+                                {{ $brand->computer->where('condition', 1)->count() }}
+                            </p>
+                            <p>Kondisi Rusak:
+                                {{ $brand->computer->where('condition', 0)->count() }}
+                            </p>
                         </div>
                     </div>
                 </div>
