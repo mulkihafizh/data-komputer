@@ -40,6 +40,7 @@
                             class="w-full focus:outline-none text-gray-300 px-4 py-3 rounded-2xl bg-gray-600"
                             id="">
                             <option value="" hidden>Pilih Ruangan</option>
+                            <option value="">Tidak Ada</option>
                             @foreach ($rooms as $room)
                                 <option value="{{ $room->id }}">{{ $room->room_number }}</option>
                                 </option>
@@ -55,7 +56,7 @@
                             id="">
                             <option value="" hidden>Pilih Kondisi</option>
                             <option value="1">Baik</option>
-                            <option value="2">Rusak</option>
+                            <option value="0">Rusak</option>
                         </select>
                     </div>
                 </div>

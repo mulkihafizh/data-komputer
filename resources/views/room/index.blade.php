@@ -7,7 +7,7 @@
             <div class="stats flex text-gray-300">
                 <div class="add">
                     <a href="room/create" class="text-white"><i class="bi bi-plus-lg text-blue-300"></i> Tambah
-                        Brand</a>
+                        Ruangan</a>
                 </div>
             </div>
         </div>

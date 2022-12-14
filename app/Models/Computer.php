@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Computer extends Model
 {
     use HasFactory;
-    protected $fillable = ['room_id', 'name', 'brand_id', 'condition'];
+protected $fillable = ['room_id', 'name', 'brand_id', 'condition', 'date'];
     public function room()
     {
         return $this->belongsTo(Room::class);

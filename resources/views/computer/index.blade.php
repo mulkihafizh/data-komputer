@@ -3,7 +3,7 @@
 @section('content')
     <section class="grow lg:mx-20 my-8 mx-5 flex flex-col  gap-5  text-white">
         <div class="wrap-title">
-            <div class="dashboard-title  text-3xl mb-8"><i class="bi bi-display text-text-color"></i> Data Komputer</div>
+            <div class="dashboard-title  text-3xl mb-8"> <i class="bi bi-display text-text-color"></i> Data Komputer</div>
             <div class="stats flex justify-between text-gray-300">
                 <div class="status flex gap-8">
                     <p>Total: {{ $computers->count() }}</p>
@@ -24,9 +24,6 @@
             @foreach ($computers as $computer)
                 <div class="card bg-third-color p-8  shadow-xl rounded-lg">
                     <div class="computer rounded-lg ">
-                        <h1>
-                            {{ $computer->where('created_at', now()->format('Y-m-d'))->count() }}
-                        </h1>
                         <h1 class="title text-2xl mb-4"><i class="bi bi-display text-text-color"></i> {{ $computer->name }}
                         </h1>
                         <div class="data text-text-color">

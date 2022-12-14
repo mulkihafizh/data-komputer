@@ -20,6 +20,7 @@ return new class extends Migration
             $table->bigInteger('brand_id');
             $table->boolean('condition')->default(1);
             $table->bigInteger('room_id')->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }

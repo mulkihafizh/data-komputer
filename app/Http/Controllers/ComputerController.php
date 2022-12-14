@@ -41,7 +41,7 @@ class ComputerController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required',
             'brand_id' => 'required',
         ]);
@@ -50,6 +50,7 @@ class ComputerController extends Controller
             [
                 'name' => $request->name,
                 'brand_id' => $request->brand_id,
+                'date' => now()
             ]
         );
         return redirect()->route('computer.index')->with('success', 'Computer created successfully.');
@@ -94,7 +95,6 @@ class ComputerController extends Controller
         $request->validate([
             'name' => 'required',
             'brand_id' => 'required',
-            'room_id' => 'required',
             'condition' => 'required',
         ]);
 
